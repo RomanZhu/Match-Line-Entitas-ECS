@@ -1,6 +1,6 @@
 # Match Line template for Unity
-Template for Match Line genre using Entitas ECS.
-[Preview](https://imgur.com/a/6Lrfzmw)
+![Field](https://i.imgur.com/ZkIYyGZ.jpg) 
+Template for Match Line genre using Entitas ECS. [Preview](https://imgur.com/a/6Lrfzmw) 
 ## Features
 - Low Unity dependency
 - Basic UI
