@@ -1,5 +1,6 @@
 # Match Line template for Unity
 Template for Match Line genre using Entitas ECS.
+[Preview](https://imgur.com/a/6Lrfzmw)
 ## Features
 - Low Unity dependency
 - Basic UI
@@ -14,9 +15,9 @@ Template for Match Line genre using Entitas ECS.
 - GameOver
 - Restart
 
-(1) requires restart for now.
+(1) requires clicking restart button for now.
 (2) coming soon.
- 
+
 
 ## Disclaimer
 Template is WIP, there is missing core functional. That project shows how ECS can help to create clear project structure and gives ability to add features without pain.
