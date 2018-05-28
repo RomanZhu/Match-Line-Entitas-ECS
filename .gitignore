@@ -1,0 +1,7 @@
+*.csproj
+*.sln
+Match-Line-Entitas-ECS.sln.DotSettings.user
+.idea/
+Assets/Libs/Editor/
+Assets/Libs/Editor.meta
+Library/
