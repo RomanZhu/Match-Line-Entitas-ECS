@@ -1,5 +1,6 @@
 # Match Line template for Unity
-Template for Match Line genre using Entitas ECS. [Preview](https://imgur.com/a/6Lrfzmw) 
+Template for Match Line genre using Entitas ECS. [Preview](https://imgur.com/a/6Lrfzmw)
+
 ![Matchline template screenshot](https://i.imgur.com/mlKnpay.png) 
 
 ## Features
@@ -21,6 +22,7 @@ Template for Match Line genre using Entitas ECS. [Preview](https://imgur.com/a/6
 
 ## Roadmap
 You can look at current progress in [Trello](https://trello.com/b/vmV1K1xB/match-line-ecs-template) 
+
 ![Trello screenshot](https://i.imgur.com/f6mmkQ6.png)
 ## Disclaimer
 Template is WIP, there is missing core functional. That project shows how ECS can help to create clear project structure and gives ability to add features without pain.
