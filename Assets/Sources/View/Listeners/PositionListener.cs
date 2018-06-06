@@ -8,9 +8,11 @@ public class PositionListener : MonoBehaviour, IEventListener, IPositionListener
     private GameEntity _entity;
 
     private Vector3 _targetPosition;
-
+    private Transform _transform;
+    
     public void RegisterListeners(IEntity entity)
     {
+        _transform = transform;
         _entity = (GameEntity) entity;
         _entity.AddPositionListener(this);
 
@@ -21,9 +23,9 @@ public class PositionListener : MonoBehaviour, IEventListener, IPositionListener
     {
         _targetPosition = value.ToVector3();
     }
-
+    
     private void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, _targetPosition, _lerpSpeed * Time.deltaTime);
+        _transform.position = Vector3.Lerp(_transform.position, _targetPosition, _lerpSpeed * Time.deltaTime);
     }
 }

@@ -3,5 +3,5 @@
 [Game]
 public sealed class ComboComponent : IComponent
 {
-    public ComboType value;
+    public int value;
 }

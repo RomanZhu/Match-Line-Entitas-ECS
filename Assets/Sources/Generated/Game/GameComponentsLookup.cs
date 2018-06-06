@@ -22,20 +22,17 @@ public static class GameComponentsLookup {
     public const int GameDestroyedListener = 11;
     public const int Id = 12;
     public const int InCombo = 13;
-    public const int LastSelected = 14;
-    public const int LastSelectedListener = 15;
-    public const int LastSelectedRemovedListener = 16;
-    public const int Matched = 17;
-    public const int Movable = 18;
-    public const int Position = 19;
-    public const int PositionListener = 20;
-    public const int Reward = 21;
-    public const int Selected = 22;
-    public const int SelectedListener = 23;
-    public const int SelectedRemovedListener = 24;
-    public const int SelectionId = 25;
+    public const int Matched = 14;
+    public const int Movable = 15;
+    public const int Position = 16;
+    public const int PositionListener = 17;
+    public const int Reward = 18;
+    public const int Selected = 19;
+    public const int SelectedListener = 20;
+    public const int SelectedRemovedListener = 21;
+    public const int SelectionId = 22;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 23;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -52,9 +49,6 @@ public static class GameComponentsLookup {
         "GameDestroyedListener",
         "Id",
         "InCombo",
-        "LastSelected",
-        "LastSelectedListener",
-        "LastSelectedRemovedListener",
         "Matched",
         "Movable",
         "Position",
@@ -81,9 +75,6 @@ public static class GameComponentsLookup {
         typeof(GameDestroyedListenerComponent),
         typeof(IdComponent),
         typeof(InComboComponent),
-        typeof(LastSelectedComponent),
-        typeof(LastSelectedListenerComponent),
-        typeof(LastSelectedRemovedListenerComponent),
         typeof(MatchedComponent),
         typeof(MovableComponent),
         typeof(PositionComponent),

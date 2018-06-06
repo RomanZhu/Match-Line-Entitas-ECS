@@ -4,5 +4,5 @@ using Entitas.CodeGeneration.Attributes;
 [Game]
 public sealed class SelectionIdComponent : IComponent
 {
-    [EntityIndex] public int value;
+    [PrimaryEntityIndex] public int value;
 }

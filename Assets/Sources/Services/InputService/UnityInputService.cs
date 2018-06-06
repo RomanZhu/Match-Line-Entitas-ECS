@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class UnityInputService : Service, IInputService
+public sealed class UnityInputService : Service, IInputService
 {
     private bool _isHolding = false;
     private Vector3 _holdingPosition = new Vector3(-1, -1, -1);

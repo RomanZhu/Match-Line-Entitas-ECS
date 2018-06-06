@@ -12,14 +12,14 @@ public class UnityView : MonoBehaviour, IView, IGameDestroyedListener
         _entity.AddGameDestroyedListener(this);
 
 #if UNITY_EDITOR
-        gameObject.Link(entity, contexts.game);
+        //gameObject.Link(entity, contexts.game);
 #endif
     }
 
     public void OnDestroyed(GameEntity entity)
     {
 #if UNITY_EDITOR
-        gameObject.Unlink();
+        //gameObject.Unlink();
 #endif
         Destroy(gameObject);
     }

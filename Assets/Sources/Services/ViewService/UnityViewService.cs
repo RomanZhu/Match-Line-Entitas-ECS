@@ -2,7 +2,7 @@
 using Entitas;
 using UnityEngine;
 
-public class UnityViewService : Service, IViewService
+public sealed class UnityViewService : Service, IViewService
 {
     private Transform _root;
 

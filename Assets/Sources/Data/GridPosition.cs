@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //That is required so nobody can set hex values into unity's position 
+[Serializable]
 public struct GridPosition : IEquatable<GridPosition>
 {
     public int x;

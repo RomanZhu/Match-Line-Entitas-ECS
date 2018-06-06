@@ -28,6 +28,12 @@ public sealed class GameRestartSystem : ReactiveSystem<InputEntity>
         foreach (var entity in _group.GetEntities(_buffer))
         {
             entity.isDestroyed = true;
+            
+            if (entity.hasPosition)
+            {
+                var position = entity.position.value;
+                entity.ReplacePosition(new GridPosition(-position.x - 1, -position.y - 1));
+            }
         }
     }
 }

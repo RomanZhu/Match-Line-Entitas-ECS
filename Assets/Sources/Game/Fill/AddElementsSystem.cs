@@ -29,9 +29,9 @@ public sealed class AddElementsSystem : ReactiveSystem<GameEntity>
         for (int x = 0; x < size.x; x++)
         {
             var position = new GridPosition(x, size.y - 1);
-            var candidates = _contexts.game.GetEntitiesWithPosition(position);
+            var candidate = _contexts.game.GetEntityWithPosition(position);
 
-            if (candidates.Count == 0)
+            if (candidate == null)
             {
                 _elementService.CreateRandomElement(position);
             }

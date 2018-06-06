@@ -4,14 +4,10 @@ using Entitas;
 public sealed class AddSelectionSystem : ReactiveSystem<InputEntity>
 {
     private readonly Contexts _contexts;
-    private readonly IGroup<GameEntity> _group;
-    private readonly List<GameEntity> _buffer;
     
     public AddSelectionSystem(Contexts contexts) : base(contexts.input)
     {
         _contexts = contexts;
-        _group = _contexts.game.GetGroup(GameMatcher.LastSelected);
-        _buffer = new List<GameEntity>();
     }
 
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
@@ -36,11 +32,10 @@ public sealed class AddSelectionSystem : ReactiveSystem<InputEntity>
 
         if (horizontalBounded && verticalBounded)
         {
-            var entitiesUnderPointer = _contexts.game.GetEntitiesWithPosition(position);
-            if (entitiesUnderPointer.Count == 0)
-                return;
+            var entityUnderPointer = _contexts.game.GetEntityWithPosition(position);
 
-            var entityUnderPointer = entitiesUnderPointer.SingleEntity();
+            if (entityUnderPointer == null)
+                return;
 
             if (entityUnderPointer.isBlock)
                 return;
@@ -48,18 +43,18 @@ public sealed class AddSelectionSystem : ReactiveSystem<InputEntity>
             if (entityUnderPointer.isSelected)
                 return;
 
-            var lastSelectedEntities = _group.GetEntities(_buffer);
-            if (lastSelectedEntities.Count == 0)
+            var lastSelectedId = _contexts.gameState.lastSelected.value;
+            if (lastSelectedId == -1)
             {
                 entityUnderPointer.isSelected = true;
-                entityUnderPointer.isLastSelected = true;
                 entityUnderPointer.ReplaceSelectionId(0);
 
+                _contexts.gameState.ReplaceLastSelected(entityUnderPointer.id.value);
                 _contexts.gameState.ReplaceMaxSelectedElement(0);
             }
             else
             {
-                var lastSelected = lastSelectedEntities.SingleEntity();
+                var lastSelected = _contexts.game.GetEntityWithId(lastSelectedId);
                 if (lastSelected.hasElementType && entityUnderPointer.hasElementType)
                 {
                     if (lastSelected.elementType.value == entityUnderPointer.elementType.value)
@@ -70,11 +65,10 @@ public sealed class AddSelectionSystem : ReactiveSystem<InputEntity>
                             var selectionId = _contexts.gameState.maxSelectedElement.value;
                             selectionId++;
 
-                            lastSelected.isLastSelected = false;
                             entityUnderPointer.isSelected = true;
-                            entityUnderPointer.isLastSelected = true;
                             entityUnderPointer.ReplaceSelectionId(selectionId);
-
+                            
+                            _contexts.gameState.ReplaceLastSelected(entityUnderPointer.id.value);
                             _contexts.gameState.ReplaceMaxSelectedElement(selectionId);
                         }
                     }

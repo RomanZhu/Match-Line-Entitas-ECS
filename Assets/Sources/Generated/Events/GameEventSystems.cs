@@ -11,8 +11,6 @@ public sealed class GameEventSystems : Feature {
     public GameEventSystems(Contexts contexts) {
         Add(new ColorEventSystem(contexts)); // priority: 0
         Add(new GameDestroyedEventSystem(contexts)); // priority: 0
-        Add(new LastSelectedEventSystem(contexts)); // priority: 0
-        Add(new LastSelectedRemovedEventSystem(contexts)); // priority: 0
         Add(new PositionEventSystem(contexts)); // priority: 0
         Add(new SelectedEventSystem(contexts)); // priority: 0
         Add(new SelectedRemovedEventSystem(contexts)); // priority: 0

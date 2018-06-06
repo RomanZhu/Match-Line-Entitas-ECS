@@ -21,4 +21,17 @@ public static class PositionConversionExstensions
         var result = new GridPosition(x, y);
         return result;
     }
+
+    public static int ToIndex(this GridPosition position, GridSize size)
+    {
+        return position.x * size.y + position.y;
+    }
+
+    public static GridPosition ToGridPosition(this int position, GridSize size)
+    {
+        var x = position / size.y;
+        var y = position - x * size.y;
+        var result = new GridPosition(x, y);
+        return result;
+    }
 }

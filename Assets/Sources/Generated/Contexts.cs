@@ -73,12 +73,12 @@ public partial class Contexts {
             game.GetGroup(GameMatcher.Id),
             (e, c) => ((IdComponent)c).value));
 
-        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, GridPosition>(
+        game.AddEntityIndex(new Entitas.PrimaryEntityIndex<GameEntity, GridPosition>(
             Position,
             game.GetGroup(GameMatcher.Position),
             (e, c) => ((PositionComponent)c).value));
 
-        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, int>(
+        game.AddEntityIndex(new Entitas.PrimaryEntityIndex<GameEntity, int>(
             SelectionId,
             game.GetGroup(GameMatcher.SelectionId),
             (e, c) => ((SelectionIdComponent)c).value));
@@ -91,12 +91,12 @@ public static class ContextsExtensions {
         return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(value);
     }
 
-    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithPosition(this GameContext context, GridPosition value) {
-        return ((Entitas.EntityIndex<GameEntity, GridPosition>)context.GetEntityIndex(Contexts.Position)).GetEntities(value);
+    public static GameEntity GetEntityWithPosition(this GameContext context, GridPosition value) {
+        return ((Entitas.PrimaryEntityIndex<GameEntity, GridPosition>)context.GetEntityIndex(Contexts.Position)).GetEntity(value);
     }
 
-    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithSelectionId(this GameContext context, int value) {
-        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.SelectionId)).GetEntities(value);
+    public static GameEntity GetEntityWithSelectionId(this GameContext context, int value) {
+        return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.SelectionId)).GetEntity(value);
     }
 }
 //------------------------------------------------------------------------------

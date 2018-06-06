@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public static class ConfigComponentsLookup {
 
-    public const int ComboScoringTable = 0;
+    public const int ComboDefinitions = 0;
     public const int ExsplosiveScoringTable = 1;
     public const int MapSize = 2;
     public const int MaxActionCount = 3;
@@ -20,7 +20,7 @@ public static class ConfigComponentsLookup {
     public const int TotalComponents = 8;
 
     public static readonly string[] componentNames = {
-        "ComboScoringTable",
+        "ComboDefinitions",
         "ExsplosiveScoringTable",
         "MapSize",
         "MaxActionCount",
@@ -31,7 +31,7 @@ public static class ConfigComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(ComboScoringTableComponent),
+        typeof(ComboDefinitionsComponent),
         typeof(ExsplosiveScoringTableComponent),
         typeof(MapSizeComponent),
         typeof(MaxActionCountComponent),

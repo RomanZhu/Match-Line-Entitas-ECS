@@ -5,14 +5,10 @@ using Entitas;
 public sealed class UnselectionSystem : ReactiveSystem<InputEntity>
 {
     private readonly Contexts _contexts;
-    private readonly IGroup<GameEntity> _group;
-    private readonly List<GameEntity> _buffer;
     
     public UnselectionSystem(Contexts contexts) : base(contexts.input)
     {
         _contexts = contexts;
-        _group = _contexts.game.GetGroup(GameMatcher.LastSelected);
-        _buffer = new List<GameEntity>();
     }
 
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
@@ -35,18 +31,16 @@ public sealed class UnselectionSystem : ReactiveSystem<InputEntity>
         if (targetSelectionId < 0)
             return;
 
-        var targetEntity = _contexts.game.GetEntitiesWithSelectionId(targetSelectionId).SingleEntity();
+        var targetEntity = _contexts.game.GetEntityWithSelectionId(targetSelectionId);
         var position = _contexts.input.pointerHoldingPosition.value.ToGridPosition();
 
         if (position.Equals(targetEntity.position.value))
         {
-            var lastSelectedEntity = _group.GetEntities(_buffer).SingleEntity();
-            lastSelectedEntity.isLastSelected = false;
+            var lastSelectedEntity = _contexts.game.GetEntityWithId(_contexts.gameState.lastSelected.value);
             lastSelectedEntity.isSelected = false;
             lastSelectedEntity.RemoveSelectionId();
-
-            targetEntity.isLastSelected = true;
-
+            
+            _contexts.gameState.ReplaceLastSelected(targetEntity.id.value);
             _contexts.gameState.ReplaceMaxSelectedElement(targetSelectionId);
         }
     }

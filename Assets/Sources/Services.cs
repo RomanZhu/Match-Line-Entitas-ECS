@@ -3,7 +3,8 @@
 public class Services
 {
     public IViewService ViewService;
-    public ElementService ElementService;
     public IInputService InputService;
     public ITimeService TimeService;
+
+    public ElementService ElementService;
 }

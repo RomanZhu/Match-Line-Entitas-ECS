@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class UnityTimeService : Service, ITimeService
+public sealed class UnityTimeService : Service, ITimeService
 {
     public UnityTimeService(Contexts contexts) : base(contexts)
     {

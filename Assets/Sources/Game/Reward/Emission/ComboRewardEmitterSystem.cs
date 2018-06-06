@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 
 public sealed class ComboRewardEmitterSystem : ReactiveSystem<GameEntity>
 {
@@ -23,16 +24,14 @@ public sealed class ComboRewardEmitterSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        var table = _contexts.config.comboScoringTable.value;
-        
+        var definitions = _contexts.config.comboDefinitions.value;
+
         foreach (var entity in entities)
         {
-            var reward = table[entity.combo.value];
-
+            var defenition = definitions.Definitions[entity.combo.value];
+            
             var e = _contexts.game.CreateEntity();
-            e.AddReward(reward);
-
-            entity.isDestroyed = true;
+            e.AddReward(defenition.Reward);
         }
     }
 }

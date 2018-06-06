@@ -30,10 +30,10 @@ public sealed class DropSelectionOnMoveSystem : ReactiveSystem<GameEntity>
         foreach (var entity in _group.GetEntities(_buffer))
         {
             entity.isSelected = false;
-            entity.isLastSelected = false;
             entity.RemoveSelectionId();
         }
 
+        _contexts.gameState.ReplaceLastSelected(-1);
         _contexts.gameState.ReplaceMaxSelectedElement(0);
     }
 }

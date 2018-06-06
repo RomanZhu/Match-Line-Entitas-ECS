@@ -13,11 +13,12 @@ public static class GameStateComponentsLookup {
     public const int GameOver = 2;
     public const int GameOverListener = 3;
     public const int GameOverRemovedListener = 4;
-    public const int MaxSelectedElement = 5;
-    public const int Score = 6;
-    public const int ScoreListener = 7;
+    public const int LastSelected = 5;
+    public const int MaxSelectedElement = 6;
+    public const int Score = 7;
+    public const int ScoreListener = 8;
 
-    public const int TotalComponents = 8;
+    public const int TotalComponents = 9;
 
     public static readonly string[] componentNames = {
         "ActionCount",
@@ -25,6 +26,7 @@ public static class GameStateComponentsLookup {
         "GameOver",
         "GameOverListener",
         "GameOverRemovedListener",
+        "LastSelected",
         "MaxSelectedElement",
         "Score",
         "ScoreListener"
@@ -36,6 +38,7 @@ public static class GameStateComponentsLookup {
         typeof(GameOverComponent),
         typeof(GameOverListenerComponent),
         typeof(GameOverRemovedListenerComponent),
+        typeof(LastSelectedComponent),
         typeof(MaxSelectedElementComponent),
         typeof(ScoreComponent),
         typeof(ScoreListenerComponent)

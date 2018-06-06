@@ -19,22 +19,20 @@ public sealed class MoveSystem : IExecuteSystem
             for (int y = 1; y < size.y; y++)
             {
                 var position = new GridPosition(x, y);
-                var candidates = _contexts.game.GetEntitiesWithPosition(position);
+                var element = _contexts.game.GetEntityWithPosition(position);
+                
+                if(element == null)
+                    continue;
 
-                if (candidates.Count > 0)
+                if (!element.isMovable)
+                    continue;
+
+                var targetPosition = new GridPosition(x, y - 1);
+                var targetEntity = _contexts.game.GetEntityWithPosition(targetPosition);
+                if (targetEntity == null)
                 {
-                    var candidate = candidates.SingleEntity();
-
-                    if (!candidate.isMovable)
-                        continue;
-
-                    var targetPosition = new GridPosition(x, y - 1);
-                    var targetEntities = _contexts.game.GetEntitiesWithPosition(targetPosition);
-                    if (targetEntities.Count == 0)
-                    {
-                        candidate.ReplacePosition(targetPosition);
-                        moveCount++;
-                    }
+                    element.ReplacePosition(targetPosition);
+                    moveCount++;
                 }
             }
         }

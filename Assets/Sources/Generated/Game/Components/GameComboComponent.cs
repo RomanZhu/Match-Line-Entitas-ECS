@@ -11,14 +11,14 @@ public partial class GameEntity {
     public ComboComponent combo { get { return (ComboComponent)GetComponent(GameComponentsLookup.Combo); } }
     public bool hasCombo { get { return HasComponent(GameComponentsLookup.Combo); } }
 
-    public void AddCombo(ComboType newValue) {
+    public void AddCombo(int newValue) {
         var index = GameComponentsLookup.Combo;
         var component = CreateComponent<ComboComponent>(index);
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceCombo(ComboType newValue) {
+    public void ReplaceCombo(int newValue) {
         var index = GameComponentsLookup.Combo;
         var component = CreateComponent<ComboComponent>(index);
         component.value = newValue;

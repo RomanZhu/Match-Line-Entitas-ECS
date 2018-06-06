@@ -11,7 +11,7 @@
         Add(new MarkMatchedSystem(contexts));
         Add(new ExplosionSystem(contexts));
 
-        Add(new ComboDetectionSystems(contexts, services));
+        Add(new ComboDetectionSystem(contexts));
         Add(new RewardSystems(contexts, services));
 
         Add(new ActionCounterSystem(contexts));
@@ -24,8 +24,8 @@
         Add(new DropSelectionOnMoveSystem(contexts));
 
         Add(new GameRestartSystem(contexts));
-        Add(new DestroyEntitySystem(contexts));
-
         Add(new FillAllElementsSystem(contexts, services));
+        
+        Add(new DestroyEntitySystem(contexts));
     }
 }

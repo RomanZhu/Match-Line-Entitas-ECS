@@ -1,9 +1,9 @@
 ﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-[Game]
-[Event(true, EventType.Added)]
-[Event(true, EventType.Removed)]
+[GameState]
+[Unique]
 public sealed class LastSelectedComponent : IComponent
 {
+    public int value;
 }

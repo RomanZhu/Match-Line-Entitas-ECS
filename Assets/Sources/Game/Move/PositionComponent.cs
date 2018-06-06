@@ -6,5 +6,5 @@ using UnityEngine;
 [Event(true)]
 public sealed class PositionComponent : IComponent
 {
-    [EntityIndex] public GridPosition value;
+    [PrimaryEntityIndex] public GridPosition value;
 }
