@@ -26,13 +26,14 @@ public static class GameComponentsLookup {
     public const int Movable = 15;
     public const int Position = 16;
     public const int PositionListener = 17;
-    public const int Reward = 18;
-    public const int Selected = 19;
-    public const int SelectedListener = 20;
-    public const int SelectedRemovedListener = 21;
-    public const int SelectionId = 22;
+    public const int RestartHappened = 18;
+    public const int Reward = 19;
+    public const int Selected = 20;
+    public const int SelectedListener = 21;
+    public const int SelectedRemovedListener = 22;
+    public const int SelectionId = 23;
 
-    public const int TotalComponents = 23;
+    public const int TotalComponents = 24;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -53,6 +54,7 @@ public static class GameComponentsLookup {
         "Movable",
         "Position",
         "PositionListener",
+        "RestartHappened",
         "Reward",
         "Selected",
         "SelectedListener",
@@ -79,6 +81,7 @@ public static class GameComponentsLookup {
         typeof(MovableComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
+        typeof(RestartHappenedComponent),
         typeof(RewardComponent),
         typeof(SelectedComponent),
         typeof(SelectedListenerComponent),

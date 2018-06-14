@@ -3,12 +3,13 @@ using Entitas;
 
 public sealed class GameRestartSystem : ReactiveSystem<InputEntity>
 {
+    private readonly Contexts _contexts;
     private readonly IGroup<GameEntity> _group;
     private readonly List<GameEntity> _buffer;
 
-
     public GameRestartSystem(Contexts contexts) : base(contexts.input)
     {
+        _contexts = contexts;
         _group = contexts.game.GetGroup(GameMatcher.Element);
         _buffer = new List<GameEntity>();
     }
@@ -28,12 +29,9 @@ public sealed class GameRestartSystem : ReactiveSystem<InputEntity>
         foreach (var entity in _group.GetEntities(_buffer))
         {
             entity.isDestroyed = true;
-            
-            if (entity.hasPosition)
-            {
-                var position = entity.position.value;
-                entity.ReplacePosition(new GridPosition(-position.x - 1, -position.y - 1));
-            }
         }
+
+        var e = _contexts.game.CreateEntity();
+        e.isRestartHappened = true;
     }
 }

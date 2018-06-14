@@ -2,30 +2,35 @@
 using Entitas;
 using UnityEngine;
 
-public sealed class FillAllElementsSystem : ReactiveSystem<InputEntity>, IInitializeSystem
+public sealed class FillAllElementsSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 {
     private readonly Contexts _contexts;
     private readonly ElementService _elementService;
 
-    public FillAllElementsSystem(Contexts contexts, Services services) : base(contexts.input)
+    public FillAllElementsSystem(Contexts contexts, Services services) : base(contexts.game)
     {
         _contexts = contexts;
         _elementService = services.ElementService;
     }
 
-    protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
+    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(InputMatcher.Restart.Added());
+        return context.CreateCollector(GameMatcher.RestartHappened.Added());
     }
 
-    protected override bool Filter(InputEntity entity)
+    protected override bool Filter(GameEntity entity)
     {
         return true;
     }
 
-    protected override void Execute(List<InputEntity> entities)
+    protected override void Execute(List<GameEntity> entities)
     {
         Fill();
+
+        foreach (var entity in entities)
+        {
+            entity.isDestroyed = true;
+        }
     }
 
     public void Initialize()

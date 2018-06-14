@@ -2,6 +2,7 @@
 {
     public GameSystems(Contexts contexts, Services services)
     {
+        Add(new FillAllElementsSystem(contexts, services));
         Add(new AddElementsSystem(contexts, services));
         Add(new ViewSystem(contexts, services));
 
@@ -24,7 +25,6 @@
         Add(new DropSelectionOnMoveSystem(contexts));
 
         Add(new GameRestartSystem(contexts));
-        Add(new FillAllElementsSystem(contexts, services));
         
         Add(new DestroyEntitySystem(contexts));
     }
